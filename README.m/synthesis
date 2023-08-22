@@ -234,7 +234,7 @@ if {![file exists ${_REPORTS_PATH}]} {
 
 check_timing_intent
 #check_timing_intent prints a timing lint report.
-#check_timing_intent  checks  the  SDC quality and timing attributes placed on the current design and accordingly issues warnings as needed. These warnings do not indicate design has problems, instead indicate that the SDC has potential errors.
+# instead indicate that the SDC has potential errors.
 ##### OUTPUT 
 #Lint summary
 # Unconnected/logic driven clocks                                  0

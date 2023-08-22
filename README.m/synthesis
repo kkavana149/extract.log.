@@ -1,5 +1,5 @@
 #### Template Script for RTL->Gate-Level Flow (generated from GENUS 19.10-p001_1) 
-
+#this scrips stpes of RTL to gate level synthesis 
 source setup.tcl
 #source reads a  file  and  runs  the  commands  in  the  fil(scripts).
 # it set  designName  "scr1_pipe_top" and set the technology to "45"
@@ -98,8 +98,7 @@ lappend libFiles ../riscvCoreSyntaCore1/ramInputs/sram_32_1024_max_1p8V_25C.lib
 lappend libFiles ../riscvCoreSyntaCore1/ramInputs/i2c_top.lib
 lappend libFiles ../riscvCoreSyntaCore1/ramInputs/uart.lib
 }
-#This command treats the variable given by designName as a list and appends each of the value arguments to that list as a  separate element,  with  spaces  between  elements. 
-#OUTPUT: ../technology/45/lib/max/MEM2_4096X32_slow.lib ../technology/45/lib/max/MEM2_2048X32_slow.lib ../technology/45/lib/max/pdkIO.lib ../technology/45/lib/max/MEM2_512X32_slow.lib ../technology/45/lib/max/MEM2_136X32_slow.lib ../technology/45/lib/max/MEM2_128X16_slow.lib ../technology/45/lib/max/MEM2_1024X32_slow.lib ../technology/45/lib/max/MEM1_4096X32_slow.lib ../technology/45/lib/max/MEM1_256X32_slow.lib ../technology/45/lib/max/MEM1_1024X32_slow.lib ../technology/45/lib/max/slow.lib ../technology/45/lib/max/MEM2_128X32_slow.lib ../riscvCoreSyntaCore1/ramInputs/sram_32_1024_max_1p8V_25C.lib ../riscvCoreSyntaCore1/ramInputs/i2c_top.lib ../riscvCoreSyntaCore1/ramInputs/uart.lib
+#This command treats the variable given by designName as a list and appends each of the value arguments to that list as a  separate element,  with  spaces  between  elements. #OUTPUT: ../technology/45/lib/max/MEM2_4096X32_slow.lib ../technology/45/lib/max/MEM2_2048X32_slow.lib ../technology/45/lib/max/pdkIO.lib ../technology/45/lib/max/MEM2_512X32_slow.lib ../technology/45/lib/max/MEM2_136X32_slow.lib ../technology/45/lib/max/MEM2_128X16_slow.lib ../technology/45/lib/max/MEM2_1024X32_slow.lib ../technology/45/lib/max/MEM1_4096X32_slow.lib ../technology/45/lib/max/MEM1_256X32_slow.lib ../technology/45/lib/max/MEM1_1024X32_slow.lib ../technology/45/lib/max/slow.lib ../technology/45/lib/max/MEM2_128X32_slow.lib ../riscvCoreSyntaCore1/ramInputs/sram_32_1024_max_1p8V_25C.lib ../riscvCoreSyntaCore1/ramInputs/i2c_top.lib ../riscvCoreSyntaCore1/ramInputs/uart.lib
 
 
 read_libs  $libFiles
@@ -117,11 +116,7 @@ read_physical -lef $lefFiles
 
 #During the Physical step, the physical libraries (OA or LEF) are loaded into the tool's database using read_physical. When the  command  is issued,  the  database is loaded with the specified objects, and is available for querying of attributes associated with the physical data, such as size, layer details, and so on.
 #According to lef_library, there are total 9 routing layers 
-
-
-
-
-#" ../LEF/gsclib045_tech.lef ../LEF/gsclib045_macro.lef ../LEF/pll.lef   ../LEF/CDK_S128x16.lef  ../LEF/CDK_S256x16.lef ../LEF/CDK_R512x16.lef " 
+ 
 
 ## Provide either cap_table_file or the qrc_tech_file
 ##set_db / .cap_table_file <file> 
@@ -154,12 +149,10 @@ read_physical -lef $lefFiles
 
 
 read_hdl -sv $RTLFile
-#read_hdl loads one or more HDL files in the  order  given  into memory.  Files  containing  macro  definitions should be loaded before the macros are used. Otherwise, there are no ordering of constraints.
+#read_hdl -sv $RTLFile to loads one or more HDL files in the  order  given  into memory.
 
 elaborate $DESIGN
-#elaborate creates a design hierarchy consisting of a top-level design and its referenced subdesigns from Verilog/SystemVerilog  modules  or VHDL  entity/architectures. If the top-level design is not specified, it elaborates all the modules not instantiated by any other module as toplevel and elaborates them all along with their subdesigns.
-
-#The command transforms each module/architecture to be represented as a design in the  form  of  a  structural  netlist.  It  also  performs semantic   checking,   sequential   register  (flops/latches)  inferencing,  and  high-level  HDL  optimizations.  Instances  of  undefined modules/entities are marked as unresolved and the corresponding modules/entities reported  as  blackboxes.   You  can   set  the  attribute hdl_error_on_latch  to  true,  to  error  out for latches inferred during elaborate and set the attribute hdl_error_on_blackbox to true, to error out for blackboxes during elaborate
+#elaborate creates a design hierarchy consisting of a top-level design and its referenced subdesigns from Verilog/SystemVerilog  modules  or VHDL  entity/architectures. If the top-level design is not specified, it elaborates all the modules not instantiated by any other module as toplevel and elaborates them all along with their subdesignsops/latches)  inferencing,  and  high-level  HDL  optimizations.  Instances  of  undefined modules/entities are marked as unresolved and the corresponding modules/entities reported  as  blackboxes.   You  can   set  the  attribute hdl_error_on_latch  to  true,  to  error  out for latches inferred during elaborate and set the attribute hdl_error_on_blackbox to true, to error out for blackboxes during elaborate
 
 #The command returns the directory path to the top-level design(s) that it creates.
 
